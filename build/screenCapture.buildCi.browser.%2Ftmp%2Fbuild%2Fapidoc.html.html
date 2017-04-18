@@ -1,0 +1,156 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/grncdr/node-any-db#readme">any-db (v2.2.0)</a>
+</h1>
+<h4>Database-agnostic connection pooling, querying, and result sets</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.any-db">module any-db</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.any-db.createConnection">
+            function <span class="apidocSignatureSpan">any-db.</span>createConnection
+            <span class="apidocSignatureSpan">(dbUrl, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.any-db.createPool">
+            function <span class="apidocSignatureSpan">any-db.</span>createPool
+            <span class="apidocSignatureSpan">(dbUrl, poolConfig)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.any-db" id="apidoc.module.any-db">module any-db</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.any-db.createConnection" id="apidoc.element.any-db.createConnection">
+        function <span class="apidocSignatureSpan">any-db.</span>createConnection
+        <span class="apidocSignatureSpan">(dbUrl, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function connect(dbUrl, callback) {
+  var adapterConfig = parseDbUrl(dbUrl)
+  var adapter = getAdapter(adapterConfig.adapter)
+  var conn = adapter.createConnection(adapterConfig, callback);
+  return conn
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Synopsis
+
+Establish a connection:
+
+```javascript
+// Takes an optional callback
+var conn = anyDB.<span class="apidocCodeKeywordSpan">createConnection</span>('driver://user:pass@hostname/database')
+```
+
+Make queries:
+
+```javascript
+var sql = 'SELECT * FROM questions'
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.any-db.createPool" id="apidoc.element.any-db.createPool">
+        function <span class="apidocSignatureSpan">any-db.</span>createPool
+        <span class="apidocSignatureSpan">(dbUrl, poolConfig)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createPool(dbUrl, poolConfig) {
+  var adapterConfig = parseDbUrl(dbUrl);
+  var adapter = getAdapter(adapterConfig.adapter)
+  return new ConnectionPool(adapter, adapterConfig, poolConfig)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+tx.rollback()                     // this too
+tx.commit()                       // takes an optional callback for errors
+```
+
+Create a [connection pool][ConnectionPool] that maintains 2-20 connections:
+
+```javascript
+var pool = anyDB.<span class="apidocCodeKeywordSpan">createPool</span>(dbURL, {min: 2, max: 20})
+
+pool.query(...)       // perform a single query, same API as connection
+var tx = begin(pool)  // create a transaction with the first available connection
+pool.close()          // close the pool (call when your app should exit)
+```
+
+## Description
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
