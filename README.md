@@ -1,6 +1,6 @@
 # npmdoc-any-db
 
-#### api documentation for  [any-db (v2.2.0)](https://github.com/grncdr/node-any-db#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-any-db.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-any-db) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-any-db.svg)](https://travis-ci.org/npmdoc/node-npmdoc-any-db)
+#### basic api documentation for  [any-db (v2.2.0)](https://github.com/grncdr/node-any-db#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-any-db.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-any-db) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-any-db.svg)](https://travis-ci.org/npmdoc/node-npmdoc-any-db)
 
 #### Database-agnostic connection pooling, querying, and result sets
 
@@ -66,7 +66,8 @@
     "scripts": {
         "test": "node test.js"
     },
-    "version": "2.2.0"
+    "version": "2.2.0",
+    "bin": {}
 }
 ```
 
