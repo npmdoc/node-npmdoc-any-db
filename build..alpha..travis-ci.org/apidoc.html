@@ -101,20 +101,21 @@
   return conn
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+  )
+}
+})
 
-## Synopsis
+exports.createConnection = function connect (dbUrl, callback) {
+var adapterConfig = parseDbUrl(dbUrl)
+var adapter = getAdapter(adapterConfig.adapter)
+var conn = adapter.<span class="apidocCodeKeywordSpan">createConnection</span>(adapterConfig, callback);
+return conn
+}
 
-Establish a connection:
-
-```javascript
-// Takes an optional callback
-var conn = anyDB.<span class="apidocCodeKeywordSpan">createConnection</span>(&#x27;driver://user:pass@hostname/database&#x27;)
-```
-
-Make queries:
-
-```javascript
-var sql = &#x27;SELECT * FROM questions&#x27;
+exports.createPool = function createPool (dbUrl, poolConfig) {
+var adapterConfig = parseDbUrl(dbUrl);
+var adapter = getAdapter(adapterConfig.adapter)
+return new ConnectionPool(adapter, adapterConfig, poolConfig)
 ...</pre></li>
     </ul>
 
